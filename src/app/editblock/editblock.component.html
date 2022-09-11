@@ -1,0 +1,40 @@
+<div>
+  <div class="EditBody">
+
+    <ng-container *ngIf="id === -1;else second">
+      <button type="button" (click)="onClickNew()">Neuer Benutzer</button>
+    </ng-container>
+    <ng-template #second>
+
+       <img width="150" height="auto" src={{userImage}} alt="User" onClick={importImage}/>
+
+      <label>Vorname</label>
+      <input type="text" [(ngModel)]="userFirstName" (input)="onSearchChange()">
+      <label>Nachname</label>
+      <input type="text"  [(ngModel)]="userLastName" (input)="onSearchChange()">
+      <label>Gebutsdatum (DD.MM.YYYY)</label>
+      <input type="text"  [(ngModel)]="userBirthDate" (input)="onSearchChange()">
+      <label>E-Mail</label>
+      <input type="text"  [(ngModel)]="userEmail" (input)="onSearchChange()">
+
+      <p>
+        <input type="checkbox" [checked]="userGender == valueMale" (change)="onCheckboxChange(valueMale)"/> Mann
+        <input type="checkbox" [checked]="userGender == valueFemale" (change)="onCheckboxChange(valueFemale)"/> Frau
+        <input type="checkbox" [checked]="userGender == valueDiverse" (change)="onCheckboxChange(valueDiverse)"/> divers
+      </p>
+
+      <ng-container *ngIf="id === 0;else third">
+        <button type="button" (click)="onCreate()">Erstellen</button>
+      </ng-container>
+      <ng-template #third>
+        <button type="button" (click)="onSave()">Speichern</button>
+      </ng-template>
+      <button type="button" (click)="onAbort()">Abbrechen</button>
+    </ng-template>
+
+    <ul *ngFor="let errorMessage of failList, let i = index">
+      <li>{{errorMessage}}</li>
+    </ul>
+
+  </div>
+</div>

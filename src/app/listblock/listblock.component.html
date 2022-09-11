@@ -1,0 +1,25 @@
+<div>
+  <div class="ListBody">
+    <h1>Liste</h1>
+
+
+
+    <!--<ul *ngFor="let result of dummyUser, let i = index, let jan = index">
+      <li>{{result[1]}} - {{result[0]}}
+      </li>
+    </ul>-->
+
+    <ul *ngFor="let result of dummyUser, let i = index">
+      <li>{{result[1]}}
+        <button class="ListButton" (click)="OnEdit(result[0])" tabindex={i}>✍️</button>
+        <button class="ListButton" (click)="OnDelete(result[0], i)" >🗑</button>
+        <!--<button type="button" (click)="addNewItem(result[0])">Add to parent's list</button>-->
+      </li>
+
+      <!--<li>{{i}}: {{firstName}} : {{result}}</li>-->
+      <!--<button class="ListButton" (click)="selection.value = 'dependency'" tabindex={i}>
+      </button>-->
+
+    </ul>
+  </div>
+</div>
